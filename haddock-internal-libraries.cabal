@@ -19,17 +19,22 @@ library internal-sig
   default-language:    Haskell2010
 
 library internal-impl
-  exposed-modules:     B
+  exposed-modules:     B.Sig
   build-depends:       base ^>=4.12.0.0
   hs-source-dirs:      internal-impl
   default-language:    Haskell2010
 
-library
-  mixins:              internal-sig requires (B.Sig as B)
-  reexported-modules:  B, C
-  exposed-modules:     A
+library internal-inst
+  reexported-modules:  B.Sig as B, C
   build-depends:       base ^>=4.12.0.0
                      , internal-impl
                      , internal-sig
+  default-language:    Haskell2010
+
+library
+  reexported-modules:  B, C
+  exposed-modules:     A
+  build-depends:       base ^>=4.12.0.0
+                     , internal-inst
   hs-source-dirs:      src
   default-language:    Haskell2010

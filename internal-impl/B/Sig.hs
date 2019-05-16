@@ -1,4 +1,4 @@
-module B where
+module B.Sig where
 
 thing :: String
 thing = "1"
